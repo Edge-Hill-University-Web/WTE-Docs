@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wte.views.user – User functionality view handlers &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="wte.views.user_role – Backend for Users in Parts" href="wte_views_user_role.html" />
+    <link rel="prev" title="wte.views.timed_tasks – Timed Tasks Backend" href="wte_views_timed_tasks.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="module-wte.views.user"></span><div class="section" id="wte-views-user-user-functionality-view-handlers">
+<h1><a class="reference internal" href="#module-wte.views.user" title="wte.views.user"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.views.user</span></code></a> – User functionality view handlers<a class="headerlink" href="#wte-views-user-user-functionality-view-handlers" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#module-wte.views.user" title="wte.views.user"><code class="xref py py-mod docutils literal notranslate"><span class="pre">user</span></code></a> module handles all user functionality.</p>
+<p>Routes are defined in <a class="reference internal" href="#wte.views.user.init" title="wte.views.user.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">init()</span></code></a>.</p>
+<dl class="py function">
+<dt id="wte.views.user.init">
+<code class="sig-prename descclassname"><span class="pre">wte.views.user.</span></code><code class="sig-name descname"><span class="pre">init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/user.html#init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.user.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the user-specific routes (route name, URL pattern, handler):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">users</span></code> – <code class="docutils literal notranslate"><span class="pre">/users</span></code> – <code class="xref py py-func docutils literal notranslate"><span class="pre">users()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">users.action</span></code> – <code class="docutils literal notranslate"><span class="pre">/users/action</span></code> – <code class="xref py py-func docutils literal notranslate"><span class="pre">action()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user.view</span></code> – <code class="docutils literal notranslate"><span class="pre">/users/{uid}</span></code> – <code class="xref py py-func docutils literal notranslate"><span class="pre">view()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user.edit</span></code> – <code class="docutils literal notranslate"><span class="pre">/users/{uid}/edit</span></code> – <code class="xref py py-func docutils literal notranslate"><span class="pre">edit()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user.permissions</span></code> – <code class="docutils literal notranslate"><span class="pre">/users/{uid}/permissions</span></code> –
+<code class="xref py py-func docutils literal notranslate"><span class="pre">permissions()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user.delete</span></code> – <code class="docutils literal notranslate"><span class="pre">/users/{uid}/delete</span></code> –
+<code class="xref py py-func docutils literal notranslate"><span class="pre">delete()</span></code></p></li>
+</ul>
+<p>Also initialises the <code class="xref py py-mod docutils literal notranslate"><span class="pre">pywebtools.pyramid.auth</span></code> authentication system</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.user.new_user_created">
+<code class="sig-prename descclassname"><span class="pre">wte.views.user.</span></code><code class="sig-name descname"><span class="pre">new_user_created</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/user.html#new_user_created"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.user.new_user_created" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback that sends an e-mail to the newly created user’s e-mail address
+to give them a validation link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request" title="(in The Pyramid Web Framework v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>) – The request to use for configuration settings</p></li>
+<li><p><strong>user</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code>) – The user to send the e-mail to</p></li>
+<li><p><strong>token</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeToken</span></code>) – The validation token</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.user.new_user_validated">
+<code class="sig-prename descclassname"><span class="pre">wte.views.user.</span></code><code class="sig-name descname"><span class="pre">new_user_validated</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/user.html#new_user_validated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.user.new_user_validated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback that sends an e-mail to the newly created user’s e-mail address
+to give them a password-reset link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request" title="(in The Pyramid Web Framework v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>) – The request to use for configuration settings</p></li>
+<li><p><strong>user</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code>) – The user to send the e-mail to</p></li>
+<li><p><strong>token</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeToken</span></code>) – The validation token</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.user.password_reset">
+<code class="sig-prename descclassname"><span class="pre">wte.views.user.</span></code><code class="sig-name descname"><span class="pre">password_reset</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/user.html#password_reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.user.password_reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback that sends an e-mail to the user’s e-mail address with a
+link to reset their password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request" title="(in The Pyramid Web Framework v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>) – The request to use for configuration settings</p></li>
+<li><p><strong>user</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code>) – The user to send the e-mail to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.user.password_reset_complete">
+<code class="sig-prename descclassname"><span class="pre">wte.views.user.</span></code><code class="sig-name descname"><span class="pre">password_reset_complete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/user.html#password_reset_complete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.user.password_reset_complete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback that sends an e-mail to the user’s e-mail address letting them
+know that their password has been reset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request" title="(in The Pyramid Web Framework v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>) – The request to use for configuration settings</p></li>
+<li><p><strong>user</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code>) – The user to send the e-mail to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.user.password_reset_failed">
+<code class="sig-prename descclassname"><span class="pre">wte.views.user.</span></code><code class="sig-name descname"><span class="pre">password_reset_failed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/user.html#password_reset_failed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.user.password_reset_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback that handles a failed password reset.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Documentation</a><ul>
+      <li>Previous: <a href="wte_views_timed_tasks.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.views.timed_tasks</span></code> – Timed Tasks Backend</a></li>
+      <li>Next: <a href="wte_views_user_role.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.views.user_role</span></code> – Backend for Users in Parts</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/wte_views_user.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

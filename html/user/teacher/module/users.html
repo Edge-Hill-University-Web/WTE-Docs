@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Part" href="../part/index.html" />
+    <link rel="prev" title="Module Access Settings" href="access_settings.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="user-management">
+<h1>User Management<a class="headerlink" href="#user-management" title="Permalink to this headline">¶</a></h1>
+<p>As the module’s owner you can manage the users that are taking your module.
+For each user their name, e-mail address, and role within the module are
+shown to you. The role defines what they can see and do within the module:</p>
+<dl class="simple">
+<dt><strong>Owner</strong></dt><dd><p>Any user with the <em>owner</em> role can access all content (regardless of
+<a class="reference internal" href="../status.html"><span class="doc">status</span></a>), <a class="reference internal" href="edit.html"><span class="doc">edit all content</span></a>,
+<a class="reference internal" href="delete.html"><span class="doc">delete the module</span></a>, <a class="reference internal" href="access_settings.html"><span class="doc">set the access settings</span></a>,
+and edit the module’s users.</p>
+</dd>
+<dt><strong>Tutor</strong></dt><dd><p>Users with the <em>tutor</em> role can access all content (regardless of
+<a class="reference internal" href="../status.html"><span class="doc">status</span></a>). However, they cannot change any of the content,
+access settings, or users.</p>
+</dd>
+<dt><strong>Student</strong></dt><dd><p>Users with the <em>student</em> role can only access content that is available
+(see <a class="reference internal" href="../status.html"><span class="doc">Changing the Status</span></a>).</p>
+</dd>
+</dl>
+<div class="section" id="searching-filtering">
+<h2>Searching &amp; filtering<a class="headerlink" href="#searching-filtering" title="Permalink to this headline">¶</a></h2>
+<p>By default all users who are registered on the module are displayed. To search
+for a specific user who , type all or part of their name or e-mail address into
+the text box that contains the text “Search by name of e-mail” and then click
+on the <span class="button">Search</span> button.</p>
+<p>Alternatively you can also filter the list of users by their type. To do so,
+select the filter criterion from the drop-down list in the top-right corner.
+Then click on the <span class="button">Filter</span> button. In addition to filtering by
+role, you can also show those users that have been blocked (“Blocked Users”)
+and those that are not blocked (“Active users”).</p>
+<p>You can also combine filtering and searching, either by searching and then filtering
+or by filtering and then searching.</p>
+<p>To see all users again remove any search terms and set the filter to “All users”.
+Then click on either the <span class="button">Search</span> or <span class="button">Filter</span> buttons.</p>
+</div>
+<div class="section" id="adding-users">
+<h2>Adding users<a class="headerlink" href="#adding-users" title="Permalink to this headline">¶</a></h2>
+<p>You can manually add users by clicking on the <span class="button">Add one or more users</span>
+button in the bottom left-corner.</p>
+<p>This will take you to a new page, where you can search by name or e-mail address
+for the user you wish to add. If the user is already registered for the module,
+then they will not appear in the list of search results.</p>
+<p>To add a user, select the checkbox to the left of the name of the user you wish to
+add. You can select multiple users and then all of them will be added. Next, select
+the role that you wish to give the user. finally click on the <span class="button">Add</span>
+button to actually add the users to the module.</p>
+</div>
+<div class="section" id="removing-users">
+<h2>Removing users<a class="headerlink" href="#removing-users" title="Permalink to this headline">¶</a></h2>
+<p>To remove a user, select the checkbox next to their name and then in the bottom-right
+corner select “Remove” as the action to apply to the user. Then click on the
+<span class="button">Apply</span> button. You can remove multiple users at the same time by
+selecting multiple users’ checkboxes.</p>
+<p>The action will de-register the users and delete all their work that is linked to
+the module. You will thus be asked to confirm that you wish to remove the users.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A removed user can register for the module again, if they pass the
+<a class="reference internal" href="access_settings.html"><span class="doc">Module Access Settings</span></a>. To permanently block access use the <a class="reference internal" href="#blocking-users">Blocking users</a>.</p>
+</div>
+</div>
+<div class="section" id="blocking-users">
+<h2>Blocking users<a class="headerlink" href="#blocking-users" title="Permalink to this headline">¶</a></h2>
+<p>If you want to stop a user accessing the module, then you need to block them (as
+users who are just removed can re-register). To do so, select the checkbox next
+to their name and then in the bottom-right corner select “block” as the action
+to apply to the user. Then click on the <span class="button">Apply</span> button. You can block
+multiple users at the same time by selecting multiple users’ checkboxes.</p>
+<p>This action will not affect any of the users’ work linked to the module, you can
+thus always unblock them by changing their role back “Student”.</p>
+</div>
+<div class="section" id="changing-a-user-s-role">
+<h2>Changing a user’s role<a class="headerlink" href="#changing-a-user-s-role" title="Permalink to this headline">¶</a></h2>
+<p>To change a user’s role, select the checkbox next to the name of the user you wish
+to modify. Then select “Change Role” as the action to apply to the user. Then click
+on the <span class="button">Apply</span> button. You can change multiple users’ status by
+selecting multiple users’ checkboxes.</p>
+<p>After clicking on <span class="button">Apply</span>, you are shown the list of users that will
+have their status changed. Then select the new role for those users and click on
+<span class="button">Apply Changes</span> to actually change the users’ roles.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">User Documentation</a><ul>
+  <li><a href="../index.html">Creating Teaching Materials</a><ul>
+  <li><a href="index.html">Module</a><ul>
+      <li>Previous: <a href="access_settings.html" title="previous chapter">Module Access Settings</a></li>
+      <li>Next: <a href="../part/index.html" title="next chapter">Part</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/user/teacher/module/users.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

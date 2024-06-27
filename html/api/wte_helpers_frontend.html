@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wte.helpers.frontend – Helpers for the frontend display &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="wte.models – Database Models" href="wte_models.html" />
+    <link rel="prev" title="wte.helpers – Helper functionality for views" href="wte_helpers.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="module-wte.helpers.frontend"></span><div class="section" id="wte-helpers-frontend-helpers-for-the-frontend-display">
+<h1><a class="reference internal" href="#module-wte.helpers.frontend" title="wte.helpers.frontend"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.helpers.frontend</span></code></a> – Helpers for the frontend display<a class="headerlink" href="#wte-helpers-frontend-helpers-for-the-frontend-display" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#module-wte.helpers.frontend" title="wte.helpers.frontend"><code class="xref py py-mod docutils literal notranslate"><span class="pre">frontend</span></code></a> module provides helper functionality used to
+render the frontend page displays.</p>
+<dl class="py function">
+<dt id="wte.helpers.frontend.codemirror_options">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">codemirror_options</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mimetype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#codemirror_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.codemirror_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a JSON representation of CodeMirror options that are valid
+for the given <code class="docutils literal notranslate"><span class="pre">mimetype</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request" title="(in The Pyramid Web Framework v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>) – The current request</p></li>
+<li><p><strong>mimetype</strong> (<cite>unicode</cite>) – The mimetype to generate CodeMirror options for</p></li>
+<li><p><strong>include_mode</strong> (<cite>bool</cite>) – Whether to include the <code class="docutils literal notranslate"><span class="pre">mode</span></code> setting in the options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The JSON representation of options</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.codemirror_scripts">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">codemirror_scripts</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mimetypes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#codemirror_scripts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.codemirror_scripts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tags necessary to load the CodeMirror mode
+JS files for the given list of <code class="docutils literal notranslate"><span class="pre">mimetypes</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<cite>~pyramid.request.Request</cite>) – The request to use for generating URLs</p></li>
+<li><p><strong>mimetypes</strong> (<cite>list</cite> of <cite>unicode</cite>) – The mimetypes to load the CodeMirror modes for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The necessary <code class="docutils literal notranslate"><span class="pre">&lt;script&gt;</span></code> tags</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.confirm_action">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">confirm_action</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ok</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#confirm_action"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.confirm_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a confirmation JSON object for use with the jQuery.postLink() plugin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<code class="docutils literal notranslate"><span class="pre">unicode</span></code>) – The title of the confirmation dialog box</p></li>
+<li><p><strong>message</strong> (<code class="docutils literal notranslate"><span class="pre">unicode</span></code>) – The main message to show</p></li>
+<li><p><strong>cancel</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code> or <code class="docutils literal notranslate"><span class="pre">unicode</span></code>) – The cancel button’s settings</p></li>
+<li><p><strong>ok</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code> or <code class="docutils literal notranslate"><span class="pre">unicode</span></code>) – The ok button’s settings</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.confirm_delete">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">confirm_delete</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_parts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#confirm_delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.confirm_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the confirmation JSON object for use with the jQuery.postLink() plugin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>obj_type</strong> (<code class="docutils literal notranslate"><span class="pre">unicode</span></code>) – The type of object that is being deleted</p></li>
+<li><p><strong>title</strong> (<code class="docutils literal notranslate"><span class="pre">unicode</span></code>) – The title of the object that is being delete</p></li>
+<li><p><strong>has_parts</strong> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) – Whether to add the suffix ” and all its parts”</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>JSON object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.html_id">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">html_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#html_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.html_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns a given text into a valid HTML id attribute value. Removes
+spaces and full-stops.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<cite>unicode</cite>) – The text to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corresponding HTML id</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.lt">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">lt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#lt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.lt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function that checks if <code class="docutils literal notranslate"><span class="pre">a</span></code> is less than <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.natural_list">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">natural_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">',</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">&amp;</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#natural_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.natural_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string representation of the <code class="docutils literal notranslate"><span class="pre">items</span></code> list. For an empty list
+or a single item the value is returned. For a list of two items, the items
+are joined together using the <code class="docutils literal notranslate"><span class="pre">final_separator</span></code>. For a list of more than
+two items, the all but the last item are joined using <code class="docutils literal notranslate"><span class="pre">separator</span></code> and the
+last item is joined using <code class="docutils literal notranslate"><span class="pre">final_separator</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">list()</span></code>) – The list of items to join</p></li>
+<li><p><strong>separator</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code>) – The separator to use when more than 2 items are joined.
+Defaults to ‘, ‘.</p></li>
+<li><p><strong>final_separator</strong> – The separator to use for the last two items in the list.
+Defaults to ‘ &amp; ‘.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A string representation of the list</p>
+</dd>
+<dt class="field-odd">Return_type</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.part_change_notification_text">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">part_change_notification_text</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">part</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#part_change_notification_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.part_change_notification_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a default notification text to be emailed when changes
+are made to a part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/api/request.html#pyramid.request.Request" title="(in The Pyramid Web Framework v2.0.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>) – The current request to get the current user from</p></li>
+<li><p><strong>part</strong> (<a class="reference internal" href="wte_models.html#wte.models.Part" title="wte.models.Part"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part</span></code></a>) – The part that is being changed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The default notification text</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.readable_timedelta">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">readable_timedelta</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#readable_timedelta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.readable_timedelta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a <a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code></a> into a human-readable string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delta</strong> (<a class="reference external" href="https://docs.python.org/3/library/datetime.html#datetime.timedelta" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code></a>) – The time-delta to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The human-readable string representation of the <code class="docutils literal notranslate"><span class="pre">delta</span></code></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.set_list">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">set_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#set_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.set_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string representation of the unique items in the <code class="docutils literal notranslate"><span class="pre">items</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">items</span></code> must be a <code class="xref py py-func docutils literal notranslate"><span class="pre">list()</span></code> of <code class="xref py py-func docutils literal notranslate"><span class="pre">tuple()</span></code> <code class="docutils literal notranslate"><span class="pre">(item,</span> <span class="pre">count)</span></code> as returned
+by <a class="reference internal" href="wte_util.html#wte.util.ordered_counted_set" title="wte.util.ordered_counted_set"><code class="xref py py-func docutils literal notranslate"><span class="pre">ordered_counted_set()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>items</strong> – The list of items to transform into a string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A string containing all unique items</p>
+</dd>
+<dt class="field-odd">Return_type</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.split_seconds">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">split_seconds</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seconds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#split_seconds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.split_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a time in seconds into a <code class="docutils literal notranslate"><span class="pre">(days,</span> <span class="pre">hours,</span> <span class="pre">minutes,</span> <span class="pre">seconds)</span></code>
+tuple for use in <a class="reference internal" href="#wte.helpers.frontend.time_string" title="wte.helpers.frontend.time_string"><code class="xref py py-func docutils literal notranslate"><span class="pre">time_string()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>seconds</strong> (<code class="docutils literal notranslate"><span class="pre">int</span></code>) – The time in seconds to split</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(days,</span> <span class="pre">hours,</span> <span class="pre">minutes,</span> <span class="pre">seconds)</span></code></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.template_for_part">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">template_for_part</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">part</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#template_for_part"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.template_for_part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the correct partial template path for a given
+<a class="reference internal" href="wte_models.html#wte.models.Part" title="wte.models.Part"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part</span></code></a>. If there is no partial template for the given
+<a class="reference internal" href="wte_models.html#wte.models.Part" title="wte.models.Part"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part</span></code></a>, then <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>part</strong> (<a class="reference internal" href="wte_models.html#wte.models.Part" title="wte.models.Part"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part</span></code></a>) – The <a class="reference internal" href="wte_models.html#wte.models.Part" title="wte.models.Part"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part</span></code></a> to generate the template path for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The partial template path or <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-odd">Return_type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.time_string">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">time_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">days</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hours</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minutes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seconds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#time_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.time_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the <code class="docutils literal notranslate"><span class="pre">days</span></code>, <code class="docutils literal notranslate"><span class="pre">hours</span></code>, <code class="docutils literal notranslate"><span class="pre">minutes</span></code>, and <code class="docutils literal notranslate"><span class="pre">seconds</span></code> into
+a human-readable format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>days</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code>) – The number of days to the timestamp</p></li>
+<li><p><strong>hours</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code>) – The number of hours to the timestamp</p></li>
+<li><p><strong>minutes</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code>) – The number of minutes to the timestamp</p></li>
+<li><p><strong>seconds</strong> (<code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code>) – The number of seconds to the timestamp</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The human-readable representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-func docutils literal notranslate"><span class="pre">unicode()</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.helpers.frontend.user_admin_menubar">
+<code class="sig-prename descclassname"><span class="pre">wte.helpers.frontend.</span></code><code class="sig-name descname"><span class="pre">user_admin_menubar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/helpers/frontend.html#user_admin_menubar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.helpers.frontend.user_admin_menubar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the menu bar for the users administration list.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Documentation</a><ul>
+      <li>Previous: <a href="wte_helpers.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.helpers</span></code> – Helper functionality for views</a></li>
+      <li>Next: <a href="wte_models.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.models</span></code> – Database Models</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/wte_helpers_frontend.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

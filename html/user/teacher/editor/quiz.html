@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>In-Tutorial Quizes &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Allowing the User to Show and Hide Content" href="show-hide.html" />
+    <link rel="prev" title="Videos" href="video.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="in-tutorial-quizes">
+<h1>In-Tutorial Quizes<a class="headerlink" href="#in-tutorial-quizes" title="Permalink to this headline">¶</a></h1>
+<p>The Web Teaching Environment lets you create small quizzes as part of the main content
+of a module, tutorial, or page. The quiz system currently allows single or multiple
+choice questions with one or more correct answers per question.</p>
+<p>To create a new Quiz use the following ReST:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">quiz</span><span class="p">::</span> quiz-identifier
+   <span class="nc">:title:</span> <span class="nf">This is the quiz&#39;s title</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">quiz-identifier</span></code> must consist only of letters and numbers. The <code class="docutils literal notranslate"><span class="pre">title</span></code> can consist
+of any content you wish to use.</p>
+<p>To add questions to the quiz, include <code class="docutils literal notranslate"><span class="pre">quiz-question</span></code> entries in the <code class="docutils literal notranslate"><span class="pre">quiz</span></code>:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p"> ..</span> <span class="ow">quiz</span><span class="p">::</span> quiz-identifier
+    <span class="nc">:title:</span> <span class="nf">This is the quiz&#39;s title</span>
+
+<span class="p">    ..</span> <span class="ow">quiz-question</span><span class="p">::</span> question-identifier-1
+       <span class="nc">:type:</span> <span class="nf">single-choice</span>
+       <span class="nc">:question:</span> <span class="nf">Select one of these options</span>
+
+       [x] Answer 1
+       Answer 2
+       Answer 3
+
+<span class="p">    ..</span> <span class="ow">quiz-question</span><span class="p">::</span> question-identifier-2
+       <span class="nc">:type:</span> <span class="nf">multi-choice</span>
+       <span class="nc">:question:</span> <span class="nf">Select all options that are correct</span>
+
+       Answer 1
+       [x] Answer 2
+       [x] Answer 3
+       Answer 4
+
+The <span class="s">``question-identifier-1``</span> must consist only of letters and numbers. The <span class="s">``question``</span> can
+consist of any content you wish to use. The <span class="s">``type``</span> must be either &quot;single-choice&quot; for a
+single-choice question or &quot;multi-choice&quot; for a multi-choice question.
+
+Each line in the <span class="s">``quiz-question``</span> is shown as one potential answer. Use &quot;[x]&quot; at the beginning
+of those answers that are correct. For single choice questions, you can only mark one question
+as correct. For multiple choice questions you can mark multiple answers as correct. The learner
+has to select all correct answers and none of the incorrect answers in order for the question
+to be judged to be correct overall.
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">User Documentation</a><ul>
+  <li><a href="../index.html">Creating Teaching Materials</a><ul>
+  <li><a href="index.html">Editor</a><ul>
+      <li>Previous: <a href="video.html" title="previous chapter">Videos</a></li>
+      <li>Next: <a href="show-hide.html" title="next chapter">Allowing the User to Show and Hide Content</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/user/teacher/editor/quiz.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

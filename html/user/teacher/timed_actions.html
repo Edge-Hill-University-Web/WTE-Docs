@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timed Actions &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="API Documentation" href="../../api/index.html" />
+    <link rel="prev" title="Download Content" href="download.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="timed-actions">
+<h1>Timed Actions<a class="headerlink" href="#timed-actions" title="Permalink to this headline">¶</a></h1>
+<p>Timed actions allow you to specify that a specific change is made to your content
+at a specific time. How frequently the system checks for timed actions to be run
+depends on how the administrator configured the system. You should in general not
+expect accuracy below 1 minute.</p>
+<p>Timed actions are only available for modules and parts.</p>
+<div class="section" id="add-a-new-timed-action">
+<h2>Add a new timed action<a class="headerlink" href="#add-a-new-timed-action" title="Permalink to this headline">¶</a></h2>
+<p>To add a new timed action, select the action you wish to add and click on the
+<span class="button">Add Action</span> button. Currently only the following timed action is available:</p>
+<ul class="simple">
+<li><p><strong>Change Status</strong> - This action allows you to automatically change the <a class="reference internal" href="status.html"><span class="doc">status</span></a>
+of the module or part at a given time.</p></li>
+</ul>
+<p>After clicking on the <span class="button">Add Action</span> button, you will automatically be taken
+to the editing page for your new timed action.</p>
+</div>
+<div class="section" id="edit-a-timed-action">
+<h2>Edit a timed action<a class="headerlink" href="#edit-a-timed-action" title="Permalink to this headline">¶</a></h2>
+<p>To edit a timed action, move your mouse over the <span class="fi-list"></span> icon of the timed action and
+click on the <span class="dropdown-link fi-pencil"> Edit</span> item.</p>
+<p>On the edit page you can specify the date and time that the action is to be run at and any
+parameters to use when running the action (see below). If you select a date and time that is
+in the past, then the action will essentially be run immediately.</p>
+<div class="section" id="change-status-action">
+<h3>Change Status action<a class="headerlink" href="#change-status-action" title="Permalink to this headline">¶</a></h3>
+<p>For the <em>Change Status</em> action there is only on parameter and that is the <a class="reference internal" href="status.html"><span class="doc">status</span></a>
+that you wish to set for the module or part at the given date and time.</p>
+</div>
+</div>
+<div class="section" id="delete-a-timed-action">
+<h2>Delete a timed action<a class="headerlink" href="#delete-a-timed-action" title="Permalink to this headline">¶</a></h2>
+<p>To delete a timed action, move your mouse over the <span class="fi-list"></span> icon of the timed action and
+click on the <span class="dropdown-link fi-trash"> Delete</span> item. As this action cannot be undone you will
+be asked to confirm it.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">User Documentation</a><ul>
+  <li><a href="index.html">Creating Teaching Materials</a><ul>
+      <li>Previous: <a href="download.html" title="previous chapter">Download Content</a></li>
+      <li>Next: <a href="../../api/index.html" title="next chapter">API Documentation</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/user/teacher/timed_actions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

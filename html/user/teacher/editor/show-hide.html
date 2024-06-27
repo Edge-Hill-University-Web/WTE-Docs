@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Allowing the User to Show and Hide Content &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Changing the Status" href="../status.html" />
+    <link rel="prev" title="In-Tutorial Quizes" href="quiz.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="allowing-the-user-to-show-and-hide-content">
+<h1>Allowing the User to Show and Hide Content<a class="headerlink" href="#allowing-the-user-to-show-and-hide-content" title="Permalink to this headline">¶</a></h1>
+<p>The WTE allows you to mark blocks of content as “optional” in that they can be shown
+and hidden by the user. To create such an optional block, start it with <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">show-hide::</span></code>
+and then add whatever content you wish to add.</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">show-hide</span><span class="p">::</span>
+
+  This paragraph is initially visible, but can be hidden by the user.
+</pre></div>
+</div>
+<p>By default blocks are initially visible, but can be hidden. If you want the block to
+initially be hidden, add the <code class="docutils literal notranslate"><span class="pre">:initial:</span> <span class="pre">hidden</span></code> option:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">show-hide</span><span class="p">::</span>
+  <span class="nc">:initial:</span> <span class="nf">hidden</span>
+
+  This paragraph is initially hidden, but can be shown by the user.
+</pre></div>
+</div>
+<p>You can also add an arbitrary title to the block using the <code class="docutils literal notranslate"><span class="pre">:title:</span></code> option:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">show-hide</span><span class="p">::</span>
+  <span class="nc">:initial:</span> <span class="nf">hidden</span>
+  <span class="nc">:title:</span> <span class="nf">Click on the plus icon to show the answer</span>
+
+  The answer to the question was 42.
+</pre></div>
+</div>
+<p>The title will always be visible, so you can use it to let the user know that they there
+is content to be shown or for anything else you wish to let the user know.</p>
+<p>You can put any other content in a <code class="docutils literal notranslate"><span class="pre">show-hide</span></code> block. The next example has a nested
+<code class="docutils literal notranslate"><span class="pre">sourcecode</span></code> block:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">show-hide</span><span class="p">::</span>
+  <span class="nc">:initial:</span> <span class="nf">hidden</span>
+  <span class="nc">:title:</span> <span class="nf">Your code should now look like this:</span>
+
+<span class="p">  ..</span> <span class="ow">sourcecode</span><span class="p">::</span> <span class="k">HTML</span>
+
+    <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">User Documentation</a><ul>
+  <li><a href="../index.html">Creating Teaching Materials</a><ul>
+  <li><a href="index.html">Editor</a><ul>
+      <li>Previous: <a href="quiz.html" title="previous chapter">In-Tutorial Quizes</a></li>
+      <li>Next: <a href="../status.html" title="next chapter">Changing the Status</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/user/teacher/editor/show-hide.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

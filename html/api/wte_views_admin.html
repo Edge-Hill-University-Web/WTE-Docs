@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wte.views.admin – Admin view handlers &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="wte.views.asset – Assets" href="wte_views_asset.html" />
+    <link rel="prev" title="wte.views – View handlers" href="wte_views.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <span class="target" id="module-wte.views.admin"></span><div class="section" id="wte-views-admin-admin-view-handlers">
+<h1><a class="reference internal" href="#module-wte.views.admin" title="wte.views.admin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.views.admin</span></code></a> – Admin view handlers<a class="headerlink" href="#wte-views-admin-admin-view-handlers" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference internal" href="#module-wte.views.admin" title="wte.views.admin"><code class="xref py py-mod docutils literal notranslate"><span class="pre">admin</span></code></a> handles the requests relating to general
+administrative functionality.</p>
+<p>Routes are defined in <a class="reference internal" href="#wte.views.admin.init" title="wte.views.admin.init"><code class="xref py py-func docutils literal notranslate"><span class="pre">init()</span></code></a>.</p>
+<dl class="py function">
+<dt id="wte.views.admin.admin">
+<code class="sig-prename descclassname"><span class="pre">wte.views.admin.</span></code><code class="sig-name descname"><span class="pre">admin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/admin.html#admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.admin.admin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">/admin</span></code> URL, displaying all available administrative
+functions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.admin.content_admin">
+<code class="sig-prename descclassname"><span class="pre">wte.views.admin.</span></code><code class="sig-name descname"><span class="pre">content_admin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/admin.html#content_admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.admin.content_admin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">/admin/content</span></code> URL, displaying all available administrative
+functions related to the content administrations.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.admin.content_list">
+<code class="sig-prename descclassname"><span class="pre">wte.views.admin.</span></code><code class="sig-name descname"><span class="pre">content_list</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/admin.html#content_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.admin.content_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">/admin/content/list</span></code> URL providing administrative access
+to all <a class="reference internal" href="wte_models.html#wte.models.Part" title="wte.models.Part"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part</span></code></a>s.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.admin.content_regenerate">
+<code class="sig-prename descclassname"><span class="pre">wte.views.admin.</span></code><code class="sig-name descname"><span class="pre">content_regenerate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/admin.html#content_regenerate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.admin.content_regenerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the <code class="docutils literal notranslate"><span class="pre">/admin/content/regenerate</span></code> URL, regenerating the
+<code class="docutils literal notranslate"><span class="pre">compiled_content</span></code> attribute for all <a class="reference internal" href="wte_models.html#wte.models.Part" title="wte.models.Part"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part</span></code></a>s.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="wte.views.admin.init">
+<code class="sig-prename descclassname"><span class="pre">wte.views.admin.</span></code><code class="sig-name descname"><span class="pre">init</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/wte/views/admin.html#init"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#wte.views.admin.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the admin-specific routes (route name, URL pattern
+handler):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">admin</span></code> – <code class="docutils literal notranslate"><span class="pre">/admin</span></code> – <a class="reference internal" href="#wte.views.admin.admin" title="wte.views.admin.admin"><code class="xref py py-func docutils literal notranslate"><span class="pre">admin()</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">admin.content</span></code> – <code class="docutils literal notranslate"><span class="pre">/admin/content</span></code> –
+<a class="reference internal" href="#wte.views.admin.content_admin" title="wte.views.admin.content_admin"><code class="xref py py-func docutils literal notranslate"><span class="pre">content_admin()</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">admin.content.regenerate</span></code> – <code class="docutils literal notranslate"><span class="pre">/admin/content/regenerate</span></code>
+– <a class="reference internal" href="#wte.views.admin.content_regenerate" title="wte.views.admin.content_regenerate"><code class="xref py py-func docutils literal notranslate"><span class="pre">content_regenerate()</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">admin.content.list</span></code> – <code class="docutils literal notranslate"><span class="pre">/admin/content/list</span></code>
+– <a class="reference internal" href="#wte.views.admin.content_list" title="wte.views.admin.content_list"><code class="xref py py-func docutils literal notranslate"><span class="pre">content_list()</span></code></a></p></li>
+</ul>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">API Documentation</a><ul>
+      <li>Previous: <a href="wte_views.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.views</span></code> – View handlers</a></li>
+      <li>Next: <a href="wte_views_asset.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">wte.views.asset</span></code> – Assets</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/wte_views_admin.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

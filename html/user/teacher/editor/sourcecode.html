@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Highlighting Sourcecode &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Including Assets" href="asset.html" />
+    <link rel="prev" title="Introduction to ReStructured Text" href="rst-primer.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="highlighting-sourcecode">
+<h1>Highlighting Sourcecode<a class="headerlink" href="#highlighting-sourcecode" title="Permalink to this headline">¶</a></h1>
+<p>The WTE comes with sophisticated source-code highlighting as part of the
+content editor (using the <a class="reference external" href="http://pygments.org/">pygments</a> library). Creating a highlighted source-code
+block is very simple. You start a block of code with the <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">sourcecode::</span></code>
+directive. After the <code class="docutils literal notranslate"><span class="pre">::</span></code> you must provide a blank space and then the type of
+source-code that your block will contain. After the directive, you <strong>must</strong>
+have one empty line and then the source-code must be indented by at least two
+spaces.</p>
+<p>For example the following ReST will create syntax highlighting for HTML:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">sourcecode</span><span class="p">::</span> <span class="k">html</span>
+
+  <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Testing<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Body<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>which will be displayed as:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Testing<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Body<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>You can find the full list of available languages for syntax highlighting
+<a class="reference external" href="http://pygments.org/docs/lexers/">here</a>.</p>
+<div class="section" id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<p>You can pass options to the source-code directive in order to modify how
+the source-code is highlighted. Options must follow directly after the
+<code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">sourcecode::</span></code> directive and must be separated from the highlighted
+source-code by an empty line.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:filename:</span> <span class="pre">XXX</span></code> - Displays a file-name in the top-right corner of the
+source-code block. Replace the <code class="docutils literal notranslate"><span class="pre">XXX</span></code> with the actual file-name to show</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:linenos:</span> <span class="pre">X</span></code> - Displays line-numbers. Replace the <code class="docutils literal notranslate"><span class="pre">X</span></code> with the
+number you want to start enumerating at</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:no-select:</span></code> - To make it very difficult for the learner to select the
+sourcecode and copy it (it is not impossible, but very difficult)</p></li>
+</ul>
+<p>The following example shows the same HTML being highlighted, but with the
+inclusion of a filename (“index.html”) and with line numbers starting at
+1.</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">sourcecode</span><span class="p">::</span> html
+  <span class="nc">:filename:</span> <span class="nf">index.html</span>
+  <span class="nc">:linenos:</span> <span class="nf">1</span>
+
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Testing&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1&gt;Body&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">User Documentation</a><ul>
+  <li><a href="../index.html">Creating Teaching Materials</a><ul>
+  <li><a href="index.html">Editor</a><ul>
+      <li>Previous: <a href="rst-primer.html" title="previous chapter">Introduction to ReStructured Text</a></li>
+      <li>Next: <a href="asset.html" title="next chapter">Including Assets</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/user/teacher/editor/sourcecode.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wte.views.user &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for wte.views.user</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">#########################################################</span>
+<span class="sd">:mod:`wte.views.user` -- User functionality view handlers</span>
+<span class="sd">#########################################################</span>
+
+<span class="sd">The :mod:`~wte.views.user` module handles all user functionality.</span>
+
+<span class="sd">Routes are defined in :func:`~wte.views.user.init`.</span>
+
+<span class="sd">.. moduleauthor:: Mark Hall &lt;mark.hall@work.room3b.eu&gt;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">pywebtools.pyramid</span> <span class="k">import</span> <span class="n">auth</span> <span class="k">as</span> <span class="n">pyramid_auth</span>
+
+<span class="kn">from</span> <span class="nn">wte.util</span> <span class="k">import</span> <span class="p">(</span><span class="n">send_email</span><span class="p">,</span> <span class="n">get_config_setting</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="init"><a class="viewcode-back" href="../../../api/wte_views_user.html#wte.views.user.init">[docs]</a><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adds the user-specific routes (route name, URL pattern, handler):</span>
+
+<span class="sd">    * ``users`` -- ``/users`` -- :func:`~wte.views.user.users`</span>
+<span class="sd">    * ``users.action`` -- ``/users/action`` -- :func:`~wte.views.user.action`</span>
+<span class="sd">    * ``user.view`` -- ``/users/{uid}`` -- :func:`~wte.views.user.view`</span>
+<span class="sd">    * ``user.edit`` -- ``/users/{uid}/edit`` -- :func:`~wte.views.user.edit`</span>
+<span class="sd">    * ``user.permissions`` -- ``/users/{uid}/permissions`` --</span>
+<span class="sd">      :func:`~wte.views.user.permissions`</span>
+<span class="sd">    * ``user.delete`` -- ``/users/{uid}/delete`` --</span>
+<span class="sd">      :func:`~wte.views.user.delete`</span>
+
+<span class="sd">    Also initialises the :mod:`pywebtools.pyramid.auth` authentication system</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pyramid_auth</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">config</span><span class="p">,</span>
+                      <span class="n">renderers</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;user.login&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/login.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.logout&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/logout.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.register&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/register.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.confirm&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/confirm.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.forgotten_password&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/forgotten_password.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.reset_password&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/reset_password.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;users&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/list.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;users.action&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/action.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.view&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/view.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.edit&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/edit.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.permissions&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/permissions.kajiki&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.delete&#39;</span><span class="p">:</span> <span class="s1">&#39;wte:templates/users/delete.kajiki&#39;</span><span class="p">},</span>
+                      <span class="n">redirects</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;_default&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.login&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;route&#39;</span><span class="p">:</span> <span class="s1">&#39;part.list&#39;</span><span class="p">,</span>
+                                                <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;_query&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{uid}</span><span class="s1">&#39;</span><span class="p">}}},</span>
+                                 <span class="s1">&#39;user.logout&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.register&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.forgotten_password&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.reset_password&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;route&#39;</span><span class="p">:</span> <span class="s1">&#39;part.list&#39;</span><span class="p">,</span>
+                                                         <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;_query&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;user_id&#39;</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">{uid}</span><span class="s1">&#39;</span><span class="p">}}}},</span>
+                      <span class="n">callbacks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;user.created&#39;</span><span class="p">:</span> <span class="n">new_user_created</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.validated&#39;</span><span class="p">:</span> <span class="n">new_user_validated</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.password_reset&#39;</span><span class="p">:</span> <span class="n">password_reset</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.password_reset_failed&#39;</span><span class="p">:</span> <span class="n">password_reset_failed</span><span class="p">,</span>
+                                 <span class="s1">&#39;user.password_reset_complete&#39;</span><span class="p">:</span> <span class="n">password_reset_complete</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="new_user_created"><a class="viewcode-back" href="../../../api/wte_views_user.html#wte.views.user.new_user_created">[docs]</a><span class="k">def</span> <span class="nf">new_user_created</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Callback that sends an e-mail to the newly created user&#39;s e-mail address</span>
+<span class="sd">    to give them a validation link.</span>
+
+<span class="sd">    :param request: The request to use for configuration settings</span>
+<span class="sd">    :type request: :class:`~pyramid.request.Request`</span>
+<span class="sd">    :param user: The user to send the e-mail to</span>
+<span class="sd">    :type user: :class:`~pywebtools.pyramid.auth.models.User`</span>
+<span class="sd">    :param token: The validation token</span>
+<span class="sd">    :type token: :class:`~pywebtools.pyramid.auth.models.TimeToken`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">flash</span><span class="p">(</span><span class="s1">&#39;A confirmation e-mail has been sent to the e-mail address you provided.&#39;</span><span class="p">,</span> <span class="n">queue</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">)</span>
+    <span class="n">send_email</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+               <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+               <span class="n">get_config_setting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;email.sender&#39;</span><span class="p">,</span>
+                                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;no-reply@example.com&#39;</span><span class="p">),</span>
+               <span class="s1">&#39;Please confirm your registration&#39;</span><span class="p">,</span>
+               <span class="sd">&#39;&#39;&#39;Hello %s,</span>
+
+<span class="sd">Thank you for registering with the Web Teaching Environment. To complete your</span>
+<span class="sd">registration, please click on the following link or copy it into your browser:</span>
+
+<span class="sd">%s</span>
+
+<span class="sd">This link is valid for 60 minutes. If you do not confirm your registration within</span>
+<span class="sd">that time, you will need to use the &quot;Forgotten Password&quot; function to request a new</span>
+<span class="sd">confirmation link.</span>
+
+<span class="sd">Best Regards,</span>
+<span class="sd">Web Teaching Environment&#39;&#39;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span>
+                               <span class="n">request</span><span class="o">.</span><span class="n">route_url</span><span class="p">(</span><span class="s1">&#39;user.confirm&#39;</span><span class="p">,</span>
+                                                 <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="o">.</span><span class="n">token</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="new_user_validated"><a class="viewcode-back" href="../../../api/wte_views_user.html#wte.views.user.new_user_validated">[docs]</a><span class="k">def</span> <span class="nf">new_user_validated</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Callback that sends an e-mail to the newly created user&#39;s e-mail address</span>
+<span class="sd">    to give them a password-reset link.</span>
+
+<span class="sd">    :param request: The request to use for configuration settings</span>
+<span class="sd">    :type request: :class:`~pyramid.request.Request`</span>
+<span class="sd">    :param user: The user to send the e-mail to</span>
+<span class="sd">    :type user: :class:`~pywebtools.pyramid.auth.models.User`</span>
+<span class="sd">    :param token: The validation token</span>
+<span class="sd">    :type token: :class:`~pywebtools.pyramid.auth.models.TimeToken`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">send_email</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+               <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+               <span class="n">get_config_setting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;email.sender&#39;</span><span class="p">,</span>
+                                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;no-reply@example.com&#39;</span><span class="p">),</span>
+               <span class="s1">&#39;Registration for the Web Teaching Environment Complete&#39;</span><span class="p">,</span>
+               <span class="sd">&#39;&#39;&#39;Hello %s,</span>
+
+<span class="sd">Thank you for completing the registration process. To log in, please</span>
+<span class="sd">click on the following link and set a new password:</span>
+
+<span class="sd">%s</span>
+
+<span class="sd">The link is valid for 20 minutes. If you do not set a password within that time,</span>
+<span class="sd">you will need to use the &quot;Forgotten Password&quot; function to request a new confirmation</span>
+<span class="sd">link.</span>
+
+<span class="sd">Best Regards,</span>
+<span class="sd">Web Teaching Environment&#39;&#39;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">route_url</span><span class="p">(</span><span class="s1">&#39;user.reset_password&#39;</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="o">.</span><span class="n">token</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="password_reset"><a class="viewcode-back" href="../../../api/wte_views_user.html#wte.views.user.password_reset">[docs]</a><span class="k">def</span> <span class="nf">password_reset</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">token</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Callback that sends an e-mail to the user&#39;s e-mail address with a</span>
+<span class="sd">    link to reset their password.</span>
+
+<span class="sd">    :param request: The request to use for configuration settings</span>
+<span class="sd">    :type request: :class:`~pyramid.request.Request`</span>
+<span class="sd">    :param user: The user to send the e-mail to</span>
+<span class="sd">    :type user: :class:`~pywebtools.pyramid.auth.models.User`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">flash</span><span class="p">(</span><span class="s1">&#39;A password reset link has been sent to the e-mail address you provided.&#39;</span><span class="p">,</span> <span class="n">queue</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">)</span>
+    <span class="n">send_email</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+               <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+               <span class="n">get_config_setting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;email.sender&#39;</span><span class="p">,</span>
+                                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;no-reply@example.com&#39;</span><span class="p">),</span>
+               <span class="s1">&#39;Password for the Web Teaching Environment reset&#39;</span><span class="p">,</span>
+               <span class="sd">&#39;&#39;&#39;Hello %s,</span>
+
+<span class="sd">You have asked to have your password reset. To complete the reset password</span>
+<span class="sd">click on the following link or copy it into your browser:</span>
+
+<span class="sd">%s</span>
+
+<span class="sd">The link is valid for 20 minutes. If you do not set a password within that time,</span>
+<span class="sd">you will need to use the &quot;Forgotten Password&quot; function to request a new confirmation</span>
+<span class="sd">link.</span>
+
+<span class="sd">If you did not ask for your password to be reset, then please check that</span>
+<span class="sd">nobody else has access to your e-mail account and might be trying to</span>
+<span class="sd">access your Web Teaching Environment account.</span>
+
+<span class="sd">Best Regards,</span>
+<span class="sd">Web Teaching Environment&#39;&#39;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">display_name</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">route_url</span><span class="p">(</span><span class="s1">&#39;user.reset_password&#39;</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="o">.</span><span class="n">token</span><span class="p">)))</span></div>
+
+
+<div class="viewcode-block" id="password_reset_failed"><a class="viewcode-back" href="../../../api/wte_views_user.html#wte.views.user.password_reset_failed">[docs]</a><span class="k">def</span> <span class="nf">password_reset_failed</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Callback that handles a failed password reset.&quot;&quot;&quot;</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">flash</span><span class="p">(</span><span class="s1">&#39;A password reset link has been sent to the e-mail address you provided.&#39;</span><span class="p">,</span> <span class="n">queue</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="password_reset_complete"><a class="viewcode-back" href="../../../api/wte_views_user.html#wte.views.user.password_reset_complete">[docs]</a><span class="k">def</span> <span class="nf">password_reset_complete</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Callback that sends an e-mail to the user&#39;s e-mail address letting them</span>
+<span class="sd">    know that their password has been reset.</span>
+
+<span class="sd">    :param request: The request to use for configuration settings</span>
+<span class="sd">    :type request: :class:`~pyramid.request.Request`</span>
+<span class="sd">    :param user: The user to send the e-mail to</span>
+<span class="sd">    :type user: :class:`~pywebtools.pyramid.auth.models.User`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">send_email</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+               <span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
+               <span class="n">get_config_setting</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;email.sender&#39;</span><span class="p">,</span>
+                                  <span class="n">default</span><span class="o">=</span><span class="s1">&#39;no-reply@example.com&#39;</span><span class="p">),</span>
+               <span class="s1">&#39;Reset your password for the Web Teaching Environment&#39;</span><span class="p">,</span>
+               <span class="sd">&#39;&#39;&#39;Hello %s,</span>
+
+<span class="sd">You have just reset your password for the Web Teaching Environment.</span>
+
+<span class="sd">If you have not done so, then please contact your administrator as soon as</span>
+<span class="sd">possible as somebody else may have gained access to your account.</span>
+
+<span class="sd">Best Regards,</span>
+<span class="sd">Web Teaching Environment&#39;&#39;&#39;</span> <span class="o">%</span> <span class="n">user</span><span class="o">.</span><span class="n">display_name</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  <li><a href="../../wte.html">wte</a><ul>
+  <li><a href="../views.html">wte.views</a><ul>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

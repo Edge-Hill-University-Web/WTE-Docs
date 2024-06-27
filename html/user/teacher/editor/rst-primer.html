@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to ReStructured Text &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Highlighting Sourcecode" href="sourcecode.html" />
+    <link rel="prev" title="Editor" href="index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction-to-restructured-text">
+<h1>Introduction to ReStructured Text<a class="headerlink" href="#introduction-to-restructured-text" title="Permalink to this headline">¶</a></h1>
+<p>The basic idea behind ReStructured Text (ReST) is to have a text format where the source text gives
+a visual indication of what the rendered text will look like. This page will give you a quick introduction
+to ReST. For more details consult <a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html">http://www.sphinx-doc.org/en/stable/rest.html</a>. The content editor
+gives you an immediate display of what your ReST will look like, so the easiest way to get comfortable
+with ReST is just to try it out in the editor (rest assured you cannot break anything).</p>
+<div class="line-block">
+<div class="line">Quick links:</div>
+<div class="line"><a class="reference internal" href="#plain-text">Plain Text</a></div>
+<div class="line"><a class="reference internal" href="#structuring-text">Structuring Text</a></div>
+<div class="line"><a class="reference internal" href="#highlighting-text">Highlighting Text</a></div>
+<div class="line"><a class="reference internal" href="#lists">Lists</a></div>
+<div class="line"><a class="reference internal" href="#tables">Tables</a></div>
+</div>
+<div class="section" id="plain-text">
+<h2>Plain Text<a class="headerlink" href="#plain-text" title="Permalink to this headline">¶</a></h2>
+<p>The basic structure in ReST is the paragraph, which is simply a chunk of text separated from all other text
+by an empty line. You can split the text of a paragraph over multiple lines (as long as there is no empty
+line), but you <strong>must</strong> ensure that each line is indented by the same amount of white-space on the left.
+For example the following ReST</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>This is a basic paragraph that will
+be shown as one long piece of text.
+</pre></div>
+</div>
+<p>will be displayed as</p>
+<p class="rest-render-sample">This is a basic paragraph that will
+be shown as one long piece of text.</p>
+<p>By default the any line-breaks you put in your text will simply be treated as spaces. If you want your
+line-breaks to be respected, then you need to prefix each line with <code class="docutils literal notranslate"><span class="pre">|</span></code>. For example the following ReST</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> This text will be shown
+<span class="o">|</span> with exactly this layout
+<span class="o">|</span> and all line-breaks included.
+</pre></div>
+</div>
+<p>will be displayed as</p>
+<div class="rest-render-sample line-block">
+<div class="line">This text will be shown</div>
+<div class="line">with exactly this layout</div>
+<div class="line">and all line-breaks included.</div>
+</div>
+<p>If you want your text to be shown as a quote, then simply indent the text with more white-space than the
+preceeding paragraph. For example the following ReST</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>This is the paragraph preceeding the quote.
+
+  This is the quoted text.
+
+  -- By somebody famous
+</pre></div>
+</div>
+<p>will be displayed as</p>
+<p class="rest-render-sample">This is the paragraph preceeding the quote.</p>
+<blockquote class="rest-render-sample">
+<div><p>This is the quoted text.</p>
+<p class="attribution">—By somebody famous</p>
+</div></blockquote>
+</div>
+<div class="section" id="structuring-text">
+<h2>Structuring Text<a class="headerlink" href="#structuring-text" title="Permalink to this headline">¶</a></h2>
+<p>To add headings to your text and structure your text in that way, simply add a line of the same character
+under your heading. It doesn’t matter which, but <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">#</span></code>, and <code class="docutils literal notranslate"><span class="pre">+</span></code> are generally used as they
+are visually distinctive. The length of the line must be exactly the same as the length of text that is to
+be the heading. To distinguish different heading levels, simply use a different character. ReST will automatically
+figure out which heading is a sub-heading of which other heading. For example the following ReST creates a two-level
+structure:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="gh">Heading 1</span>
+<span class="gh">=========</span>
+
+<span class="gh">Heading 1.1</span>
+<span class="gh">-----------</span>
+
+<span class="gh">Heading 1.2</span>
+<span class="gh">-----------</span>
+
+<span class="gh">Heading 2</span>
+<span class="gh">=========</span>
+</pre></div>
+</div>
+<p>Because both “Heading 1” and “Heading 2” are underlined with <code class="docutils literal notranslate"><span class="pre">=</span></code>, ReST knows that they are the same level.
+The same goes for “Heading 1.1” and “Heading 1.2”, but because they use a different character, ReST knows that
+they are the next level of heading.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the first line in your content is a heading, then this will not be displayed, unless you have
+multiple heading levels.</p>
+</div>
+</div>
+<div class="section" id="highlighting-text">
+<h2>Highlighting Text<a class="headerlink" href="#highlighting-text" title="Permalink to this headline">¶</a></h2>
+<p>You can highlight text using italics, bold, or tele-type. To highlight text using italics, surround the word(s)
+you wish to highlight using a single asterisk <code class="docutils literal notranslate"><span class="pre">*</span></code>. To highlight text using bold font, surround the word(s)
+you wish to highlight using a double asterisk <code class="docutils literal notranslate"><span class="pre">**</span></code>. To use tele-type, surround the word(s) with a double
+backtick <code class="docutils literal notranslate"><span class="pre">``</span></code>.</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>This is <span class="ge">*italic*</span>, <span class="gs">**bold**</span>, and <span class="s">``tele-type``</span>.
+</pre></div>
+</div>
+<p>Three things must be observed when highlighting:</p>
+<ul class="simple">
+<li><p>You <strong>must</strong> have either white-space or punctiation directly before and after the text to highlight. You cannot
+highlight within part of a word. <code class="docutils literal notranslate"><span class="pre">in*correct*</span></code> will give an error.</p></li>
+<li><p>The word(s) to highlight <strong>must</strong> start directly after the opening marker and end directly before the closing marker.
+You cannot highlight white-space. <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">fails*</span></code> will give an error.</p></li>
+<li><p>You cannot nest highlighting. <code class="docutils literal notranslate"><span class="pre">``**bold</span> <span class="pre">tele-type**``</span></code> will give an error.</p></li>
+</ul>
+</div>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<p>ReST supports three types of lists: bullet lists, enumerated lists, and definition lists.</p>
+<p>To create a bullet list, start each line that is an item in the list with a single asterisk <code class="docutils literal notranslate"><span class="pre">*</span></code>. For example the following ReST</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="m">*</span> Item
+<span class="m">*</span> Item
+<span class="m">*</span> Item
+</pre></div>
+</div>
+<p>will be displayed as</p>
+<ul class="rest-render-sample simple">
+<li><p>Item</p></li>
+<li><p>Item</p></li>
+<li><p>Item</p></li>
+</ul>
+<p>To create an enumerated list, start each line that is an item in the list with a single <code class="docutils literal notranslate"><span class="pre">#.*</span></code>. For example the following ReST</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="m">#.</span> Item 1
+<span class="m">#.</span> Item 2
+<span class="m">#.</span> Item 3
+</pre></div>
+</div>
+<p>will be displayed as</p>
+<ol class="rest-render-sample arabic simple">
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li><p>Item 3</p></li>
+</ol>
+<p>To create a definition list, consisting of pairs of definition term and the definition text, simply indent the paragraph with
+the definition text. For example the following ReST</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>Item 1
+  This is the definition for Item 1.
+Item 2
+  This is the definition for Item 2.
+</pre></div>
+</div>
+<p>will be displayed as</p>
+<dl class="rest-render-sample simple">
+<dt>Item 1</dt><dd><p>This is the definition for Item 1.</p>
+</dd>
+<dt>Item 2</dt><dd><p>This is the definition for Item 2.</p>
+</dd>
+</dl>
+<p>You can nest lists, you just need to ensure that the nested list is separated from its parent item and from the next item
+using an empty line and that the indentation of the nested list lines up with where the text for its parent
+list item starts. For example the following ReST</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span><span class="m">#.</span> Item 1
+
+   <span class="m">#.</span> Item 1.1
+   <span class="m">#.</span> Item 1.2
+
+<span class="m">#.</span> Item 2
+<span class="m">#.</span> Item 3
+
+   <span class="m">#.</span> Item 3.1
+   <span class="m">#.</span> Item 3.2
+</pre></div>
+</div>
+<p>will be displayed as</p>
+<ol class="rest-render-sample arabic simple">
+<li><p>Item 1</p>
+<ol class="arabic simple">
+<li><p>Item 1.1</p></li>
+<li><p>Item 1.2</p></li>
+</ol>
+</li>
+<li><p>Item 2</p></li>
+<li><p>Item 3</p>
+<ol class="arabic simple">
+<li><p>Item 3.1</p></li>
+<li><p>Item 3.2</p></li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="tables">
+<h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
+<p>Tables are the most complex structure in ReST, as you need to “draw” them in text. The following ReST
+demonstrates a simple, two-column table:</p>
+<div class="highlight-rest notranslate"><div class="highlight"><pre><span></span>+------------------+------------------+
+<span class="o">|</span> Column 1 Heading | Column 2 Heading |
++==================+==================+
+<span class="o">|</span> Row 1 - Column 1 | Row 1 - Column 2 |
++------------------+------------------+
+<span class="o">|</span> Row 2 - Column 1 | Row 2 - Column 2 |
++------------------+------------------+
+<span class="o">|</span> Row 3 - Column 1 | Row 3 - Column 2 |
++------------------+------------------+
+</pre></div>
+</div>
+<p>The table would be displayed as</p>
+<table class="rest-render-sample docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column 1 Heading</p></th>
+<th class="head"><p>Column 2 Heading</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Row 1 - Column 1</p></td>
+<td><p>Row 1 - Column 2</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>Row 2 - Column 1 spanning two columns</p></td>
+</tr>
+<tr class="row-even"><td><p>Row 3 - Column 1</p></td>
+<td><p>Row 3 - Column 2</p></td>
+</tr>
+</tbody>
+</table>
+<p>It is important that any table you create follows the following rules:</p>
+<ul class="simple">
+<li><p>Each column must be as wide as the widest cell in that column. Pad the other columns with white-space.</p></li>
+<li><p>Rows are separated using <code class="docutils literal notranslate"><span class="pre">-</span></code></p></li>
+<li><p>Columns are separated using <code class="docutils literal notranslate"><span class="pre">|</span></code></p></li>
+<li><p>Where a row and column intersect you must place a <code class="docutils literal notranslate"><span class="pre">+</span></code></p></li>
+<li><p>You must have one space between the cell start and end marker <code class="docutils literal notranslate"><span class="pre">|</span></code></p></li>
+<li><p>To create a header row for the table, separate that row from the rest of the table using <code class="docutils literal notranslate"><span class="pre">=</span></code> instead of <code class="docutils literal notranslate"><span class="pre">-</span></code></p></li>
+</ul>
+<p>There are on-line tools to help you generate the ReST for any content you have. Search for “rest table generator”.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../administrator/index.html">Administrator Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">User Documentation</a><ul>
+  <li><a href="../index.html">Creating Teaching Materials</a><ul>
+  <li><a href="index.html">Editor</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Editor</a></li>
+      <li>Next: <a href="sourcecode.html" title="next chapter">Highlighting Sourcecode</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/user/teacher/editor/rst-primer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

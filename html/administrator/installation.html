@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installation &#8212; Web Teaching Environment 1.3.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setup" href="setup.html" />
+    <link rel="prev" title="Administrator Documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>The Web Teaching Environment will run on Python 2.7, Python 3.4, and
+Python 3.5 (recommended).</p>
+<div class="section" id="core-system">
+<h2>Core System<a class="headerlink" href="#core-system" title="Permalink to this headline">¶</a></h2>
+<p>Due to the move to Github the Web Teaching Environment is currently only
+available as source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scmmmh</span><span class="o">/</span><span class="n">web</span><span class="o">-</span><span class="n">teaching</span><span class="o">-</span><span class="n">environment</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">web</span><span class="o">-</span><span class="n">teaching</span><span class="o">-</span><span class="n">environment</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>It is recommended that you install the Web Teaching Environment into a
+<a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtual environment</a>.</p>
+<p>To enable the Web Teaching Environment to work, you must then install either
+<a class="reference external" href="https://pypi.python.org/pypi/pycryptopp">pycryptopp</a> (Python 2.7 only) or <a class="reference external" href="https://www.dlitz.net/software/pycrypto/">PyCrypto</a> package (Python 2.7 and 3.*)
+to enable the use of session cookies. To install <a class="reference external" href="https://pypi.python.org/pypi/pycryptopp">pycryptopp</a> run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pycryptopp</span>
+</pre></div>
+</div>
+<p>To install <a class="reference external" href="https://www.dlitz.net/software/pycrypto/">PyCrypto</a> run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pycrypto</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="database-access">
+<h2>Database Access<a class="headerlink" href="#database-access" title="Permalink to this headline">¶</a></h2>
+<p>You will also need to install database access libraries for the database you
+intend to use. The Web Teaching Environment has been tested with <a class="reference external" href="http://www.postgresql.org/">PostgreSQL</a>
+and <a class="reference external" href="http://www.mysql.com/">MySQL</a>. <a class="reference external" href="http://www.sqlite.org/">SQLite</a> is not supported, as it does not provide the features
+required to migrate the database when the Web Teaching Environment is upgraded.
+<a class="reference external" href="http://docs.sqlalchemy.org/en/rel_0_8/core/engines.html#supported-databases">Other database systems</a> that are supported by <a class="reference external" href="http://www.sqlalchemy.org/">SQLAlchemy</a> can be used, but
+have not been tested.</p>
+<p>To use PostgreSQL as the database, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">psycopg2</span>
+</pre></div>
+</div>
+<p>For MySQL run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mysql</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+</div>
+<p>After the installation has completed, move on to the <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Web Teaching Environment</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Administrator Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/index.html">User Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Documentation</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Administrator Documentation</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Administrator Documentation</a></li>
+      <li>Next: <a href="setup.html" title="next chapter">Setup</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2014 - 2016, Mark Hall.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/administrator/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
